@@ -19,12 +19,10 @@ services:
       - WEBHOOK_FORMAT=${WEBHOOK_FORMAT:-json}
       - SESSION_DEVICE_NAME=${SESSION_DEVICE_NAME:-WuzAPI}
       # RabbitMQ configuration Optional
-      - RABBITMQ_URL=amqp://wuzapi:wuzapi@rabbitmq:5672/
-      - RABBITMQ_QUEUE=whatsapp_events
+      # - RABBITMQ_URL=amqp://wuzapi:wuzapi@rabbitmq:5672/
+      # - RABBITMQ_QUEUE=whatsapp_events
     depends_on:
       db:
-        condition: service_healthy
-      rabbitmq:
         condition: service_healthy
     networks:
       - wuzapi-network
@@ -72,6 +70,7 @@ services:
 
 networks:
   wuzapi-network:
+    name: wuzapi-network
     driver: bridge
 
 volumes:

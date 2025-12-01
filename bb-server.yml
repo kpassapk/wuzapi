@@ -1,0 +1,12 @@
+services:
+  bb-server:
+    networks:
+      - wuzapi-network
+    build: ./bb
+    ports:
+      - "9000:9000"  # api
+      - "3300:3300"  # portal
+
+networks:
+  wuzapi-network:
+    external: true
